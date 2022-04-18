@@ -1,0 +1,11 @@
+apis:
+  kakao:
+    url: http://kakao.com
+    subUrls:
+      address: /address
+    headers:
+      key: waoefija
+      abc: def
+    params:
+      x: 1111
+      y: 2222

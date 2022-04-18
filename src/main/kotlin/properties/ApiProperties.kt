@@ -1,16 +1,13 @@
 package properties
 
-import org.yaml.snakeyaml.Yaml
-import java.io.FileReader
+import config.RootConfig
 
 class ApiProperties(var apiKey: String) : IProperties {
     private var props: Map<String, Any>
     private var api: Map<String, Any>
 
     init {
-        println("init{}")
-        val home = System.getenv("HOME")
-        val props: Map<String, Any> = Yaml().load(FileReader("${home}/properties.yml"))
+        val props: Map<String, Any> = RootConfig.configurePath()
         this.props = props
         val apis = props["apis"] as Map<String, Any>
         api = apis[apiKey] as Map<String, Any>

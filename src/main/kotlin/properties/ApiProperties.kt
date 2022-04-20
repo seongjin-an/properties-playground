@@ -13,23 +13,24 @@ class ApiProperties(var apiKey: String) : IProperties {
         api = apis[apiKey] as Map<String, Any>
     }
 
-    override fun getProperty(): Map<String, Any> {
-        val apis = props["apis"] as Map<String, Any>
-        return apis[apiKey] as Map<String, Any>
-    }
-
-    fun getUrl(): String{
+    override fun getUrl(): String {
         return api["url"].toString()
     }
 
-    fun getSubUrl(subUrl: String): String {
+    override fun getSubUrl(subUrl: String): String {
         val subUrls = api["subUrls"] as Map<String, Any>
         return subUrls[subUrl].toString()
     }
 
-    fun getHeader(key: String): String {
-        val headers = api["headers"] as Map<String, Any?>
+    override fun getHeader(key: String): String {
+        val headers = api["headers"] as Map<String, Any>
         return headers[key].toString()
     }
+
+    override fun getParameter(key: String): String {
+        val parameters = api["params"] as Map<String, Any>
+        return parameters[key].toString()
+    }
+
 
 }
